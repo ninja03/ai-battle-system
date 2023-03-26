@@ -1,4 +1,4 @@
-import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
 import { insert } from "@/db.ts";
 import { CodeEditor } from "@/components.tsx";
 
@@ -7,7 +7,7 @@ interface PostProps {
 }
 
 export const handler: Handlers<PostProps> = {
-  GET(req: Request, ctx: HandlerContext<PostProps>) {
+  GET(req, ctx) {
     const src = `onmessage = (e) => {
   const hands = ["グー", "チョキ", "パー"];
   const hand = hands[Math.trunc(Math.random() * 3)];
@@ -17,7 +17,7 @@ export const handler: Handlers<PostProps> = {
     return ctx.render(props);
   },
 
-  async POST(req: Request, ctx: HandlerContext<PostProps>) {
+  async POST(req, ctx) {
     const form = await req.formData();
     const title = form.get("title") as string;
     const src = form.get("src") as string;
@@ -28,6 +28,6 @@ export const handler: Handlers<PostProps> = {
   },
 };
 
-export default function (props: PageProps<PostProps>) {
+export default function Post(props: PageProps<PostProps>) {
   return <CodeEditor src={props.data.src} />;
 }

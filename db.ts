@@ -9,18 +9,6 @@ export interface AI {
   src: string;
 }
 
-export interface Job {
-  id: number;
-}
-
-export interface Battle {
-  id: number;
-}
-
-export interface Ranking {
-  rank: number;
-}
-
 export async function findById(id: number) {
   const result = await supabase.from("ai").select().eq("id", id);
   return result.data![0] as AI;

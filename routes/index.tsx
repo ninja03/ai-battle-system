@@ -1,14 +1,6 @@
-import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { Button } from "@/components.tsx";
-import { AI } from "@/db.ts";
 
-export const handler: Handlers = {
-  async GET(req: Request, ctx: HandlerContext<AI[]>) {
-    return ctx.render();
-  },
-};
-
-export default function (props: PageProps) {
+export default function Index() {
   return (
     <div class="text-center">
       <a href="/ai/post" class="m-2 block">

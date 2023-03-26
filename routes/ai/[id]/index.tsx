@@ -1,15 +1,15 @@
-import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
 import { AI, findById, update } from "@/db.ts";
 import { CodeEditor } from "@/components.tsx";
 
-export const handler: Handlers = {
-  async GET(req: Request, ctx: HandlerContext<AI>) {
+export const handler: Handlers<AI> = {
+  async GET(_req, ctx) {
     const id = Number(ctx.params.id);
     const result = await findById(id);
     return ctx.render(result);
   },
 
-  async POST(req: Request, ctx: HandlerContext<AI>) {
+  async POST(req) {
     const form = await req.formData();
     const id = Number(form.get("id") as string);
     const title = form.get("title") as string;
@@ -22,7 +22,7 @@ export const handler: Handlers = {
 };
 
 // ソースコード編集画面
-export default function (props: PageProps<AI>) {
+export default function Index(props: PageProps<AI>) {
   return (
     <CodeEditor
       id={props.data.id}

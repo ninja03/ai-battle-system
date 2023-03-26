@@ -1,9 +1,9 @@
-import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
 import { AI, findAll } from "@/db.ts";
 import { Button } from "@/components.tsx";
 
-export const handler: Handlers = {
-  async GET(req: Request, ctx: HandlerContext<AI[]>) {
+export const handler: Handlers<AI[]> = {
+  async GET(_req, ctx) {
     const result = await findAll();
     return ctx.render(result);
   },
