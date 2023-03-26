@@ -1,11 +1,3 @@
-# fresh project
+じゃんけんAI総当たりシステム
 
-### Usage
-
-Start the project:
-
-```
-deno task start
-```
-
-This will watch the project directory and restart as necessary.
+https://ai-battle-system.deno.dev/
