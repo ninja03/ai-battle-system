@@ -7,7 +7,7 @@ interface PostProps {
 }
 
 export const handler: Handlers<PostProps> = {
-  GET(req, ctx) {
+  GET(_req, ctx) {
     const src = `onmessage = (e) => {
   const hands = ["グー", "チョキ", "パー"];
   const hand = hands[Math.trunc(Math.random() * 3)];
@@ -17,7 +17,7 @@ export const handler: Handlers<PostProps> = {
     return ctx.render(props);
   },
 
-  async POST(req, ctx) {
+  async POST(req) {
     const form = await req.formData();
     const title = form.get("title") as string;
     const src = form.get("src") as string;

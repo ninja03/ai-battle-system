@@ -9,7 +9,7 @@ export const handler: Handlers<AI[]> = {
   },
 };
 
-export default function (props: PageProps<AI[]>) {
+export default function Index(props: PageProps<AI[]>) {
   return (
     <>
       <h2 class="text-center text-2xl">AI一覧</h2>

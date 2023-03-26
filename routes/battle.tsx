@@ -1,4 +1,4 @@
-import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
 import Battle from "@/islands/Battle.tsx";
 import { AI, findAll } from "@/db.ts";
 
